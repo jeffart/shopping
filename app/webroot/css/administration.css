@@ -40,7 +40,7 @@ header#header_page p.right a{
 --------------------------------------------------- */
 nav#navbar{
 	height:39px;
-	background:url(../img_bo/navbar_bg.png) repeat-x;
+	background:url(../img/bo/navbar_bg.png) repeat-x;
 }
 
 nav#navbar ul{
@@ -48,13 +48,13 @@ nav#navbar ul{
 	margin:0;
 	padding:0;
 	list-style:none;
-	background:url(../img_bo/navbar_sep.png) no-repeat right center;
+	background:url(../img/bo/navbar_sep.png) no-repeat right center;
 }
 
 nav#navbar ul li{
 	display:inline-block;
 	line-height:39px;
-	background:url(../img_bo/navbar_sep.png) no-repeat left center;
+	background:url(../img/bo/navbar_sep.png) no-repeat left center;
 	padding:0 20px;
 }
 
@@ -67,7 +67,7 @@ nav#navbar ul li:hover{
 }/* FOOTER
 --------------------------------------------------- */
 footer#footer_page{
-	background:url(../img_bo/footer_bg.png) repeat-x;
+	background:url(../img/bo/footer_bg.png) repeat-x;
 	height:99px;
 	margin-top:35px;
 	padding-top:30px;
@@ -77,7 +77,7 @@ footer#footer_page{
 
 footer#footer_page ul li{
 	display:inline-block;
-	background:url(../img_bo/footer_dot.gif) no-repeat right center;
+	background:url(../img/bo/footer_dot.gif) no-repeat right center;
 	padding:0 10px 0 3px;
 }
 
