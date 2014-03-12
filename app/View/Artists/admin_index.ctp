@@ -1,44 +1,50 @@
-<div class="artists index">
-	<h2><?php echo __('Artists'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('lastname'); ?></th>
-			<th><?php echo $this->Paginator->sort('firstname'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($artists as $artist): ?>
-	<tr>
-		<td><?php echo h($artist['Artist']['id']); ?>&nbsp;</td>
-		<td><?php echo h($artist['Artist']['lastname']); ?>&nbsp;</td>
-		<td><?php echo h($artist['Artist']['firstname']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $artist['Artist']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $artist['Artist']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $artist['Artist']['id']), null, __('Are you sure you want to delete # %s?', $artist['Artist']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
+<?php $this->set('title_for_layout', 'Gestion des artistes'); ?>
+<h1>Gestion des artistes</h1>
+<div class="widget">
+    <div class="widget-title">
+        <h2>Liste des artistes</h2>
+        <ul>
+            <li>
+                <?php 
+                echo $this->Html->link(
+                    'Ajouter un artiste',
+                    array('controller'=>'artists', 'action'=>'add', 'admin'=>true),
+                    array('title'=>'Ajouter un nouvel artiste')
+                );
+                ?>
+            </li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($artists as $a): $a = $a['Artist']; ?>
+                <tr>
+                    <td class="centered"><?php echo h($a['id']); ?></td>
+                    <td><?php echo h($a['firstname']); ?></td>
+                    <td><?php echo h($a['lastname']); ?></td>
+                    <td>
+                        <?php echo $this->Html->link($this->Html->image('bo/edit.gif'), array('action' => 'edit', $a['id']),array('escape'=>false)); ?>
+			<?php echo $this->Form->postLink($this->Html->image('bo/delete.gif'), array('action' => 'delete', $a['id']), array('escape'=>false), 'Etes vous sur de vouloir supprimer cet artiste ?'); ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="pagination">
 	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+        echo $this->Paginator->prev('<', array(), null, array('class' => 'prev disabled'));
+        echo $this->Paginator->numbers(array('separator' => ''));
+        echo $this->Paginator->next('>', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Artist'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Products'), array('controller' => 'products', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add')); ?> </li>
-	</ul>
+    </div>
 </div>

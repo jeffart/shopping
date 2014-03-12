@@ -1,5 +1,5 @@
 <div class="artists view">
-<h2><?php  echo __('Artist'); ?></h2>
+<h2><?php  echo __('Artist');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -30,8 +30,8 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Products'); ?></h3>
-	<?php if (!empty($artist['Product'])): ?>
+	<h3><?php echo __('Related Products');?></h3>
+	<?php if (!empty($artist['Product'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -47,25 +47,25 @@
 		<th><?php echo __('Meta Description'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;
 		foreach ($artist['Product'] as $product): ?>
 		<tr>
-			<td><?php echo $product['id']; ?></td>
-			<td><?php echo $product['name']; ?></td>
-			<td><?php echo $product['artist_id']; ?></td>
-			<td><?php echo $product['category_id']; ?></td>
-			<td><?php echo $product['price_size_s']; ?></td>
-			<td><?php echo $product['price_size_m']; ?></td>
-			<td><?php echo $product['price_size_l']; ?></td>
-			<td><?php echo $product['image']; ?></td>
-			<td><?php echo $product['description']; ?></td>
-			<td><?php echo $product['meta_title']; ?></td>
-			<td><?php echo $product['meta_description']; ?></td>
-			<td><?php echo $product['created']; ?></td>
-			<td><?php echo $product['modified']; ?></td>
+			<td><?php echo $product['id'];?></td>
+			<td><?php echo $product['name'];?></td>
+			<td><?php echo $product['artist_id'];?></td>
+			<td><?php echo $product['category_id'];?></td>
+			<td><?php echo $product['price_size_s'];?></td>
+			<td><?php echo $product['price_size_m'];?></td>
+			<td><?php echo $product['price_size_l'];?></td>
+			<td><?php echo $product['image'];?></td>
+			<td><?php echo $product['description'];?></td>
+			<td><?php echo $product['meta_title'];?></td>
+			<td><?php echo $product['meta_description'];?></td>
+			<td><?php echo $product['created'];?></td>
+			<td><?php echo $product['modified'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'products', 'action' => 'view', $product['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'products', 'action' => 'edit', $product['id'])); ?>
@@ -78,7 +78,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>
