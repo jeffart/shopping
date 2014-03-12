@@ -10,6 +10,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
+    <?= $this->Html->script('slides.min.jquery.js'); ?>
+
+
+
     <!--[if lte IE8]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
