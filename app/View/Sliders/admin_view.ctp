@@ -1,5 +1,5 @@
 <div class="sliders view">
-<h2><?php  echo __('Slider'); ?></h2>
+<h2><?php  echo __('Slider');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

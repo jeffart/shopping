@@ -1,52 +1,51 @@
-<div class="sliders index">
-	<h2><?php echo __('Sliders'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('link'); ?></th>
-			<th><?php echo $this->Paginator->sort('title'); ?></th>
-			<th><?php echo $this->Paginator->sort('subtitle'); ?></th>
-			<th><?php echo $this->Paginator->sort('image'); ?></th>
-			<th><?php echo $this->Paginator->sort('position'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($sliders as $slider): ?>
-	<tr>
-		<td><?php echo h($slider['Slider']['id']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['link']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['title']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['subtitle']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['image']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['position']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['created']); ?>&nbsp;</td>
-		<td><?php echo h($slider['Slider']['modified']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $slider['Slider']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $slider['Slider']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $slider['Slider']['id']), null, __('Are you sure you want to delete # %s?', $slider['Slider']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
+<?php $this->set('title_for_layout', 'Gestion du carrousel'); ?>
+<h1>Gestion du carrousel</h1>
+<div class="widget">
+    <div class="widget-title">
+        <h2>Liste des images</h2>
+        <ul>
+            <li>
+            	<?php 
+                echo $this->Html->link(
+                    'Ajouter',
+                    array('action'=>'add', 'admin'=>true)
+                );
+                ?>
+            </li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <table>
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th>Titre</th>
+                    <th>Artiste</th>
+                    <th>Position</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($sliders as $s): $s = $s['Slider']; ?>
+                <tr>
+                    <td class="centered"><?php echo h($s['id']); ?></td>
+                    <td><?php echo h($s['title']); ?></td>
+                    <td><?php echo h($s['subtitle']); ?></td>
+                    <td class="centered"><?php echo h($s['position']); ?></td>
+                    <td>
+                        <?php echo $this->Html->link($this->Html->image('bo/edit.gif'), array('action' => 'edit', $s['id']),array('escape'=>false)); ?>
+                        <?php echo $this->Form->postLink($this->Html->image('bo/delete.gif'), array('action' => 'delete', $s['id']), array('escape'=>false), 'Etes vous sur de vouloir supprimer cette image ?'); ?>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <div class="pagination">
+        <?php
+            echo $this->Paginator->prev('<', array(), null, array('class' => 'prev disabled'));
+            echo $this->Paginator->numbers(array('separator' => ''));
+            echo $this->Paginator->next('>', array(), null, array('class' => 'next disabled'));
+        ?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Slider'), array('action' => 'add')); ?></li>
-	</ul>
+    </div>
 </div>

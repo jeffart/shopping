@@ -1,23 +1,22 @@
-<div class="sliders form">
-<?php echo $this->Form->create('Slider'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Edit Slider'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('link');
-		echo $this->Form->input('title');
-		echo $this->Form->input('subtitle');
-		echo $this->Form->input('image');
-		echo $this->Form->input('position');
+<?php $this->set('title_for_layout', 'Editer une image'); ?>
+<h1>Editer une image</h1>
+<div class="widget">
+    <div class="widget-title">
+        <h2>Information</h2>
+        <ul>
+            <li><?php echo $this->Html->link('Retour', array('action'=>'index', 'admin'=>true)) ?></li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <?php echo $this->Form->create('Slider', array('type'=>'file'));?>
+        <?php
+            echo $this->Form->input('id');
+            echo $this->Form->input('title', array('label'=>'Titre:'));
+            echo $this->Form->input('subtitle', array('label'=>'Artiste:'));
+            echo $this->Form->input('visuel', array('label'=>'Image', 'type'=>'file'));
+            echo $this->Form->input('link', array('label'=>'Lien de redirection:'));
+            echo $this->Form->input('position', array('label'=>'Position:'));
 	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Slider.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Slider.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Sliders'), array('action' => 'index')); ?></li>
-	</ul>
+    	<?php echo $this->Form->end('Enregistrer') ?>
+    </div>
 </div>
