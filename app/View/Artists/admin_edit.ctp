@@ -1,4 +1,5 @@
 <?php $this->set('title_for_layout', 'Editer un artiste'); ?>
+
 <h1>Editer un artiste</h1>
 <div class="widget">
     <div class="widget-title">

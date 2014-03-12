@@ -1,111 +1,148 @@
-<div class="users view">
-<h2><?php  echo __('User'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Role'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['role']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Firstname'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['firstname']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Lastname'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['lastname']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Date Birth'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['date_birth']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Billing Firstname'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['billing_firstname']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Billing Lastname'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['billing_lastname']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Billing Address'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['billing_address']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Billing Zipcode'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['billing_zipcode']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Billing City'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['billing_city']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Orders'), array('controller' => 'orders', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Order'), array('controller' => 'orders', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Orders'); ?></h3>
-	<?php if (!empty($user['Order'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Total'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($user['Order'] as $order): ?>
-		<tr>
-			<td><?php echo $order['id']; ?></td>
-			<td><?php echo $order['user_id']; ?></td>
-			<td><?php echo $order['total']; ?></td>
-			<td><?php echo $order['created']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'orders', 'action' => 'view', $order['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'orders', 'action' => 'edit', $order['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'orders', 'action' => 'delete', $order['id']), null, __('Are you sure you want to delete # %s?', $order['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<?php $this->set('title_for_layout', 'Compte client'); ?>
+<h1><?php echo $User['firstname']; ?> <?php echo $User['lastname']; ?></h1>
+<div class="widget">
+    <div class="widget-title">
+        <h2>Informations utilisateur</h2>
+        <ul>
+            <li>
+                <?php echo $this->Html->link('Modifier', array('action'=>'edit','admin'=>true, $User['id']), array('class'=>'btn')) ?>
+            </li>
+            <li>
+            	<?php 
+                echo $this->Html->link(
+                    'Retour',
+                    array('action'=>'index', 'admin'=>true)
+                );
+                ?>
+            </li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <table cellpadding="5">
+            <tr>
+                <td style="width:49%">
+                    <label>Prénom :</label>
+                    <em><?php echo $User['firstname']; ?></em>
+                </td>
+                <td>
+                    <label>Mot de passe :</label>
+                    <em>*****</em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Nom de famille :</label>
+                    <em><?php echo $User['lastname']; ?></em>
+                </td>
+                <td>
+                    <label>Date de naissance :</label>
+                    <em><?php echo $this->Date->birthday($User['date_birth']) ?></em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>E-mail :</label>
+                    <em><?php echo $User['email'] ?></em>
+                </td>
+                <td class="date_birth">
+                    <label>Inscription à la newsletter :</label>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Order'), array('controller' => 'orders', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
+
+<div class="widget">
+    <div class="widget-title">
+        <h2>Informations de facturation</h2>
+        <ul>
+            <li><?php echo $this->Html->link('Modifier', array('action'=>'edit','admin'=>true, $User['id']), array('class'=>'btn')) ?></li>
+            <li>
+            	<?php 
+                echo $this->Html->link(
+                    'Retour',
+                    array('action'=>'index', 'admin'=>true)
+                );
+                ?>
+            </li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <table cellpadding="5">
+            <tr>
+                <td style="width:49%">
+                    <label>Prénom :</label>
+                    <em><?php echo $User['billing_firstname'] ?></em>
+                </td>
+                <td>
+                    <label>Ville :</label>
+                    <em><?php echo $User['billing_city'] ?></em>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Nom de famille :</label>
+                    <em><?php echo $User['billing_lastname'] ?></em>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Adresse :</label>
+                    <em><?php echo $User['billing_address'] ?></em>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Code postal :</label>
+                    <em><?php echo $User['billing_zipcode'] ?></em>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<?php if(count($Order)>0): ?>
+<div class="widget">
+    <div class="widget-title">
+        <h2>Commandes</h2>
+        <ul>
+            <li>
+            	<?php 
+                echo $this->Html->link(
+                    'Retour',
+                    array('action'=>'index', 'admin'=>true)
+                );
+                ?>
+            </li>
+        </ul>
+    </div>
+    <div class="widget-content">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th style="width:120px">COMMANDE NO.</th>
+                    <th>DATE DE COMMANDE</th>
+                    <th style="width:120px">MONTANT</th>
+                    <th style="width:30px">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($Order as $o): ?>
+                <tr>
+                    <td style="text-align: center">#<?php echo $o['Order']['id'] ?></td>
+                    <td style="text-align: center"><?php echo $this->Date->show($o['Order']['created']) ?></td>
+                    <td style="text-align: center"><?php echo number_format($o['Order']['total'], 2, ',', ' ') ?>€</td>
+                    <td>
+                        <?php echo $this->Html->link($this->Html->image('pdf.png'), array('controller'=>'orders','action'=>'facturepdf', 'customer'=>false, $o['Order']['id']), array('class'=>'fact', 'target'=>'_blank','escape'=>false)) ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php endif; ?>
